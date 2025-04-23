@@ -1,3 +1,3 @@
-# cs4782-BLIP2
+# cs4782-SGCN
 
 https://arxiv.org/pdf/2301.12597
