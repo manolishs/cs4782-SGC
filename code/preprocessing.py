@@ -12,23 +12,23 @@ Output: A "normalized" adjacency matrix with added self-loops
 """
 def normalize_adj(adj):
     # Perform A+I
-    adj = adj + sp.eye(adj.shape[0])
+    adj = adj + torch.eye(adj.size(0))
 
-    # Prepare matrix for conversion to PyTorch:
-    adj = sp.coo_matrix(adj) # This is FROM paper itself
+    # degree vector
+    deg = adj.sum(1)
+    deg_inv_sqrt = deg.pow(-0.5)
 
-    # D: diagonal matri where each entry on the diagonal is equal to
-    # the row-sum of the adjacency matrix
-    row_sum = np.array(adj.sum(1))
+    # Prevent divide by 0 errors
+    deg_inv_sqrt[torch.isinf(deg_inv_sqrt)] = 0.0
 
-    # Compute D^{-1/2}
-    d_inv_sqrt = np.power(row_sum, -0.5).flatten()
+    D_inv_sqrt = torch.diag(deg_inv_sqrt)
 
-    # This handles division by 0 errors, make infinite entries 0
-    d_inv_sqrt[np.isinf(d_inv_sqrt)] = 0.
+    # dense
+    adj_norm = D_inv_sqrt @ adj @ D_inv_sqrt
+          
+    return adj_norm.to_sparse()                        
 
-    # Get our D matrix
-    d_mat_inv_sqrt = sp.diags(d_inv_sqrt) # We use scipy cause its apparently optimized better, this is also from paper
-
-    # Perform S = D^{-1/2}(A+I)D^{-1/2}
-    return d_mat_inv_sqrt @ adj @ d_mat_inv_sqrt
+"""Scale each node feature vector so its L1 norm equals 1."""
+def row_normalize_features(x):
+    row_sum = x.sum(dim=1, keepdim=True).clamp(min=1e-12)
+    return x / row_sum
