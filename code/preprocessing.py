@@ -32,3 +32,19 @@ def normalize_adj(adj):
 def row_normalize_features(x):
     row_sum = x.sum(dim=1, keepdim=True).clamp(min=1e-12)
     return x / row_sum
+
+"Propagates the features through the K-step feature propagation"
+def propagate_k_hops(x, adj_norm, k):
+    if k == 0:
+        return x
+
+    # Similar to the GCN, we have different routes for sparse and dense graphs
+    for _ in range(k):
+        # sparse * dense
+        if adj_norm.is_sparse:
+            x = torch.spmm(adj_norm, x)
+
+        # dense * dense
+        else:
+            x = adj_norm @ x              
+    return x

@@ -1,24 +1,9 @@
-# TAKEN FROM OFFICIAL REPO
 import torch
 import torch.nn as nn
 from torch.nn import Module
 import torch.nn.functional as F
 from preprocessing import row_normalize_features
 
-class SGC(nn.Module):
-    """
-    A Simple PyTorch Implementation of Logistic Regression.
-    Assuming the features have been preprocessed with k-step graph propagation.
-    """
-    def __init__(self, nfeat, nclass):
-        super(SGC, self).__init__()
-
-        self.W = nn.Linear(nfeat, nclass)
-
-    def forward(self, x):
-        # Only do 1 linear layer as paper describes
-        # REMINDER: DO SOFTMAX AFTER
-        return self.W(x)
     
 """
 Recreation of a graph convolutional layer from the GCN paper
@@ -61,3 +46,18 @@ class GCN(nn.Module):
         x = F.dropout(x, p=self.dropout, training=self.training)
         x = self.gc2(x, adj)
         return x
+
+"""
+SGC reimplementation, we assume that the features have been preprocessed 
+with k-step graph propagation.
+"""
+class SGC(nn.Module):
+    def __init__(self, nfeat, nclass, bias = True):
+        super(SGC, self).__init__()
+
+        self.W = nn.Linear(nfeat, nclass, bias=bias)
+
+    def forward(self, x):
+        # Only do 1 linear layer as paper describes
+        # REMINDER: DO SOFTMAX AFTER IN TRAINING
+        return self.W(x)
