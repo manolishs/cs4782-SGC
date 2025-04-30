@@ -145,7 +145,7 @@ def main():
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("plots/loss_curve.png")
+    plt.savefig("plots/gcn_loss_curve.png")
     plt.close()
 
     # Plot accuracy
@@ -157,7 +157,7 @@ def main():
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("plots/accuracy_curve.png")
+    plt.savefig("plots/gcn_accuracy_curve.png")
     plt.close()
 
     print("Saved training plots to 'plots/' directory.")
