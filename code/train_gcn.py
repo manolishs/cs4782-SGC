@@ -1,6 +1,8 @@
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
+import matplotlib.pyplot as plt
+import os
 
 # Torch Geometric is convenient for loading the exact Planetoid splits that
 # the original GCN paper used.  We can install with `pip install torch-geometric` if
@@ -69,12 +71,17 @@ def main():
     best_val_loss = float("inf")
     patience_count = 0
 
+    # We'll store metrics for plotting later
+    train_losses = []
+    val_losses = []
+    val_accuracies = []
+
     # Train loop
     for epoch in range(1, EPOCHS + 1):
         # Set to train
         model.train()
 
-        # Zero out graidents
+        # Zero out gradients
         optimizer.zero_grad()
 
         # Forward
@@ -86,7 +93,7 @@ def main():
         # Backprop
         loss_train.backward()
 
-        # Take the set
+        # Take the step
         optimizer.step()
 
         # Validation
@@ -96,6 +103,11 @@ def main():
             # Cross entropy has softmax in it, thanks NLP
             loss_val = F.cross_entropy(logits[idx_val], labels[idx_val])
             acc_val = accuracy(logits[idx_val], labels[idx_val])
+
+        # Track metrics
+        train_losses.append(loss_train.item())
+        val_losses.append(loss_val.item())
+        val_accuracies.append(acc_val)
 
         print(f"Epoch {epoch:03d}  |  train loss {loss_train:.4f}  |  val loss {loss_val:.4f}  |  val acc {acc_val:.4f}")
 
@@ -119,6 +131,36 @@ def main():
 
         # As of right now our test accuracy is 0.8180 and the paper achieved 81.5!
         print(f"Test accuracy: {test_acc:.4f}")
+
+    # Save plots
+    os.makedirs("plots", exist_ok=True)
+
+    # Plot loss
+    plt.figure(figsize=(10, 5))
+    plt.plot(train_losses, label="Train Loss")
+    plt.plot(val_losses, label="Validation Loss")
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.title("Train vs Validation Loss")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("plots/loss_curve.png")
+    plt.close()
+
+    # Plot accuracy
+    plt.figure(figsize=(10, 5))
+    plt.plot(val_accuracies, label="Validation Accuracy", color="green")
+    plt.xlabel("Epoch")
+    plt.ylabel("Accuracy")
+    plt.title("Validation Accuracy")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("plots/accuracy_curve.png")
+    plt.close()
+
+    print("Saved training plots to 'plots/' directory.")
 
 
 if __name__ == "__main__":
