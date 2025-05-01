@@ -95,9 +95,15 @@ The table below compares the average performance of our GCN and SGC implementati
 
 ## Conclusion [TODO]
 
+This project demonstrates that Simple Graph Convolution (SGC) achieves accuracy comparable to traditional Graph Convolutional Networks (GCNs) on the Cora citation dataset, while offering significant computational efficiency gains. ​
+
+Our reimplementation supports the findings of Wu et al. (2019), indicating that removing nonlinearities and collapsing weight matrices across layers can be an effective strategy for certain graph learning tasks.
+
 ## References
-- Kipf, T. N., & Welling, M. (2017). Semi-Supervised Classification with Graph Convolutional Networks. In Proceedings of the 5th International Conference on Learning Representations (ICLR 2017).
-- Wu, F., Souza, A., Zhang, T., Fifty, C., Yu, T., & Weinberger, K. (2019). Simplifying Graph Convolutional Networks. In Proceedings of the 36th International Conference on Machine Learning (ICML 2019).
+
+[1] Kipf, T. N., & Welling, M. (2017). Semi-Supervised Classification with Graph Convolutional Networks. In Proceedings of the 5th International Conference on Learning Representations (ICLR 2017).
+
+[2] Wu, F., Souza, A., Zhang, T., Fifty, C., Yu, T., & Weinberger, K. (2019). Simplifying Graph Convolutional Networks. In Proceedings of the 36th International Conference on Machine Learning (ICML 2019).
 
 ## Acknowledgements [TODO]
 This project was completed as the final project for CS 4782: Deep Learning at Cornell University in Spring 2025. We would like to express our sincere appreciation to Professor Jennifer J. Sun and Professor Kilian Q. Weinberger for their guidance and teaching throughout the semester.

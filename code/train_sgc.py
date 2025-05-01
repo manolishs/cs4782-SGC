@@ -15,7 +15,7 @@ from torch_geometric.utils import to_dense_adj
 from models import SGC
 from preprocessing import normalize_adj, row_normalize_features, propagate_k_hops
 
-DATASET       = "Citeseer"            # Cora | Citeseer | Pubmed
+DATASET       = "Pubmed"            # Cora | Citeseer | Pubmed
 K             = 2
 LR            = 0.2               # Learning rate (paper default)
 WEIGHT_DECAY  = 5e-6              # Default from official code
