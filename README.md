@@ -91,7 +91,7 @@ The table below compares the average performance of our GCN and SGC implementati
 | GCN (Wu et al.'s experiment)        | 81.4 ± 0.4 | 70.9 ± 0.5 | 79.0 ± 0.4  |
 | **GCN (our experiment)**            | **80.7 ± 0.8** | **70.9 ± 0.7** | **79.0 ± 0.5**  |
 | SGC (Wu et al.'s experiment)        | 81.0 ± 0.0 | 71.9 ± 0.1 | 78.9 ± 0.0  |
-| **SGC (our experiment)**            | **80.6 ± 0.1** | **77.9 ± 0.1** | **77.6 ± 0.1**  |
+| **SGC (our experiment)**            | **80.6 ± 0.1** | **68.3 ± 0.1** | **77.9 ± 0.1**  |
 
 ## Conclusion [TODO]
 
