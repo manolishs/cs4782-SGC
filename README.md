@@ -1,6 +1,6 @@
 # Simplifying Graph Convolutional Networks (SGC) Re-implementation
 
-## Introduction [TODO]
+## Introduction
 
 Priorly, the state-of-the-art model for semi-supervised classification task on graphs were Graph Convolutional Networks (GCNs), which is a variant of Convolutional Neural Networks (CNNs) that operates directly on graph.
 
@@ -8,7 +8,7 @@ This repository contains a re-implementation of the Simplifying Graph Convolutio
 
 The original paper can be found [here](https://arxiv.org/abs/1902.07153).
 
-## Chosen Result [TODO]
+## Chosen Result
 
 Our project aims to re-implement GCN and SGC and measure our testing performances on various citation networks dataset.
 
@@ -31,7 +31,7 @@ For reference, we have attached a subset of Table 2 from Wu et al.'s table, outl
     ├── LICENSE
     └── README.md
 
-## Re-implementation Details [TODO]
+## Re-implementation Details
 
 **Datasets**: Citeseer​, Cora, PubMed
 
@@ -45,9 +45,9 @@ Hidden units: 16; Dropout: 50%; Learning rate: 0.01; Optimizer: Adam; Epochs: 20
 
 **SGC​**
 
-One linear layer; No dropout; Learning rate: 0.2; Optimizer: Adam; Epochs: 100; Loss: Cross-Entropy.
+One linear layer; No dropout; Learning rate: 0.2; Weight decay = 5e-6; Optimizer: Adam; Epochs: 100; Loss: Cross-Entropy.
 
-## Reproduction Steps [TODO]
+## Reproduction Steps
 1. Clone and build the repository:
 
 ```
@@ -81,7 +81,7 @@ $ python code/train_sgc.py
 
 All exported results will be stored in the `results/` directory.
 
-## Results/Insights [TODO]
+## Results/Insights
 
 The table below compares the average performance of our GCN and SGC implementations on the Citeseer, Cora, and Pubmed citation network datasets (averaged over 10 runs) with those reported by Wu et al. and in previous literature.
 
@@ -93,7 +93,9 @@ The table below compares the average performance of our GCN and SGC implementati
 | SGC (Wu et al.'s experiment)        | 81.0 ± 0.0 | 71.9 ± 0.1 | 78.9 ± 0.0  |
 | **SGC (our experiment)**            | **80.6 ± 0.1** | **68.3 ± 0.1** | **77.9 ± 0.1**  |
 
-## Conclusion [TODO]
+As seen in the table, our reimplementation for the GCN is on par with the findings found on both papers. As for the SGC, our average is a little below that of We et al.’s experiment. We suspect that the reason for this is because we did not tune the weight decay on each training set. 
+
+## Conclusion
 
 This project demonstrates that Simple Graph Convolution (SGC) achieves accuracy comparable to traditional Graph Convolutional Networks (GCNs) on the Cora citation dataset, while offering significant computational efficiency gains. ​
 
@@ -105,5 +107,5 @@ Our reimplementation supports the findings of Wu et al. (2019), indicating that 
 
 [2] Wu, F., Souza, A., Zhang, T., Fifty, C., Yu, T., & Weinberger, K. (2019). Simplifying Graph Convolutional Networks. In Proceedings of the 36th International Conference on Machine Learning (ICML 2019).
 
-## Acknowledgements [TODO]
+## Acknowledgements
 This project was completed as the final project for CS 4782: Deep Learning at Cornell University in Spring 2025. We would like to express our sincere appreciation to Professor Jennifer J. Sun and Professor Kilian Q. Weinberger for their guidance and teaching throughout the semester.
