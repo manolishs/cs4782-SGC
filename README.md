@@ -10,7 +10,7 @@ The original paper can be found [here](https://arxiv.org/abs/1902.07153).
 
 ## Chosen Result
 
-Our project aims to re-implement GCN and SGC and measure our testing performances on various citation networks dataset.
+Our project aims to re-implement GCN and SGC and measure our testing performances on various citation networks dataset: Cora (McCallum et al. 2000), Citeseer (Lee et al. 2000), and Pubmed (Sen et al. 2008).
 
 For reference, we have attached a subset of Table 2 from Wu et al.'s table, outlining the testing accuracy of GCN from literature as well as the testing accuracy of their implementation of GCN and SGC averaged over 10 runs.
 
@@ -93,7 +93,7 @@ The table below compares the average performance of our GCN and SGC implementati
 | SGC (Wu et al.'s experiment)        | 81.0 ± 0.0 | 71.9 ± 0.1 | 78.9 ± 0.0  |
 | **SGC (our experiment)**            | **80.6 ± 0.1** | **68.3 ± 0.1** | **77.9 ± 0.1**  |
 
-As seen in the table, our reimplementation for the GCN is on par with the findings found on both papers. As for the SGC, our average is a little below that of We et al.’s experiment. We suspect that the reason for this is because we did not tune the weight decay on each training set. 
+As seen in the table, our reimplementation for the GCN is on par with the findings found on both papers. As for the SGC, our average is a little below that of We et al.’s experiment. We suspect that the reason for this is because we did not tune the weight decay on each training set, like the original paper did. 
 
 ## Conclusion
 
@@ -103,9 +103,15 @@ Our reimplementation supports the findings of Wu et al. (2019), indicating that 
 
 ## References
 
-[1] Kipf, T. N., & Welling, M. (2017). Semi-Supervised Classification with Graph Convolutional Networks. In Proceedings of the 5th International Conference on Learning Representations (ICLR 2017).
+[1] Giles, C. Lee, et al. CiteSeer: An Automatic Citation Indexing System, Association for Computing Machinery, 11 May 1998, clgiles.ist.psu.edu/papers/DL-1998-citeseer.pdf. 
 
-[2] Wu, F., Souza, A., Zhang, T., Fifty, C., Yu, T., & Weinberger, K. (2019). Simplifying Graph Convolutional Networks. In Proceedings of the 36th International Conference on Machine Learning (ICML 2019).
+[2] McCallum, Andrew Kachites, et al. Automating the Construction of Internet Portals with Machine Learning - Discover Computing, Kluwer Academic Publishers, July 2000, link.springer.com/article/10.1023/A:1009953814988.
+
+[3] Sen, Prithviraj, et al. Collective Classification in Network Data, 6 Sept. 2008, eliassi.org/papers/ai-mag-tr08.pdf. 
+
+[4] Thomas, Kipf N, et al. Semi-Supervised Classification with Graph Convolutional Networks. Arxiv, 22 Feb. 2017, arxiv.org/pdf/1609.02907.pdf.
+
+[5] Wu, Felix, et al. Simplifying Graph Convolutional Networks. Arxiv, 20 June 2019, arxiv.org/pdf/1902.07153.
 
 ## Acknowledgements
 This project was completed as the final project for CS 4782: Deep Learning at Cornell University in Spring 2025. We would like to express our sincere appreciation to Professor Jennifer J. Sun and Professor Kilian Q. Weinberger for their guidance and teaching throughout the semester.
