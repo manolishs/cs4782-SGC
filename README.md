@@ -22,7 +22,7 @@ For reference, we have attached a subset of Table 2 from Wu et al.'s table, outl
 
 ## GitHub Contents
     .
-    ├── code                # Contains SGC model re-implementation
+    ├── code                # Contains GCN and SGC model re-implementation
     ├── data                # Contains datasets used for training and evaluation
     ├── poster              # Contains PDF of the poster used for in-class presentations
     ├── report              # Contains PDF of final report submitted
